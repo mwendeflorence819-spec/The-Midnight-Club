@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Midnight Club</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h2>☾ THE MIDNIGHT CLUB</h2>
+        <p>Your little corner of the universe.</p>
+    </header>
+
+    <main>
+
+        <section class="welcome">
+            <p class="tag">✦ YOUR PRIVATE UNIVERSE ✦</p>
+            <h1>Welcome to the <span>Midnight Club.</span></h1>
+            <p>A place for your thoughts, moods, random adventures and beautiful chaos.</p>
+        </section>
+
+        <section class="dashboard">
+
+            <div class="card">
+                <h2>🌙 The Mood Room</h2>
+                <p>How are you feeling today?</p>
+
+                <select id="mood">
+                    <option value="">Choose your mood...</option>
+                    <option value="happy">Happy ✨</option>
+                    <option value="sad">A little sad 🥺</option>
+                    <option value="chaotic">Chaotic 😈</option>
+                    <option value="tired">Exhausted 💤</option>
+                    <option value="motivated">Unstoppable 🔥</option>
+                </select>
+
+                <button onclick="checkMood()">Check my vibe</button>
+                <p id="moodResult"></p>
+            </div>
+
+            <div class="card">
+                <h2>🎲 The Randomizer</h2>
+                <p>Bored? Let's give you something to do.</p>
+
+                <button onclick="generateActivity()">Surprise me!</button>
+                <p id="activityResult"></p>
+            </div>
+
+            <div class="card">
+                <h2>💌 The Confession Wall</h2>
+                <p>Leave a thought. No judgement here.</p>
+
+                <textarea id="confession" placeholder="What's on your mind?"></textarea>
+
+                <button onclick="saveConfession()">Leave a confession</button>
+
+                <div id="confessionWall"></div>
+            </div>
+
+           <div class="card secret">
+    <h2>🔐 The Secret Portal</h2>
+    <p>Some things aren't meant for everyone.</p>
+
+    <button onclick="unlockSecret()">Unlock the mystery</button>
+
+    <p id="secretMessage"></p>
+</div>
+  <!-- DIGITAL TERMINAL -->
+
+<div class="card terminal">
+
+    <h2>🖥️ The Digital Terminal</h2>
+
+    <p>Somewhere between reality and cyberspace...</p>
+
+    <div class="terminal-screen">
+
+        <div class="terminal-header">
+            <span>●</span>
+            <span>●</span>
+            <span>●</span>
+            <p>MIDNIGHT_OS.exe</p>
+        </div>
+
+        <div id="terminalOutput">
+            <p>Welcome to MIDNIGHT_OS.</p>
+            <p>Type <span class="terminal-highlight">help</span> to see available commands.</p>
+        </div>
+
+        
+        
+        <div class="terminal-input-area">
+            <span>visitor@midnight:~$</span>
+
+            <input
+                type="text"
+                id="terminalInput"
+                placeholder="Enter command..."
+                autocomplete="off"
+            >
+        </div>
+
+    </div>
+
+</div>          
+
+<div class="card chaos">
+                <h2>🪩 The Chaos Button</h2>
+                <p>Honestly, even I don't know what happens next.</p>
+
+                <button onclick="activateChaos()">DO NOT PRESS</button>
+                <p id="chaosResult"></p>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Made with curiosity, caffeine & a little chaos. ☾</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
