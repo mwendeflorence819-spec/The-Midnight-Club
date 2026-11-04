@@ -392,3 +392,70 @@ html {
         grid-column: auto;
     }
 }
+/* =========================
+   LUNA'S DIGITAL ROOM
+========================= */
+
+.luna-room {
+    grid-column: 1 / -1;
+    text-align: center;
+    background: linear-gradient(
+        135deg,
+        #251936,
+        #171323,
+        #302044
+    );
+}
+
+.luna-avatar {
+    font-size: 65px;
+    margin-bottom: 15px;
+
+    animation: float 3s ease-in-out infinite;
+
+    filter: drop-shadow(0 0 15px #c69aff);
+}
+
+.luna-status {
+    color: #8dffbd !important;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+.luna-chat {
+    background: #100c19;
+    border: 1px solid #594174;
+    border-radius: 12px;
+
+    padding: 20px;
+    margin: 20px 0;
+
+    min-height: 100px;
+    max-height: 220px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.luna-chat p {
+    color: #d8c0f5;
+    margin-bottom: 10px;
+}
+
+.luna-room input {
+    width: 70%;
+    max-width: 500px;
+}
+
+.luna-room button {
+    margin: 5px;
+}
+
+@media (max-width: 700px) {
+    .luna-room {
+        grid-column: auto;
+    }
+
+    .luna-room input {
+        width: 100%;
+    }
+}

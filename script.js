@@ -255,3 +255,99 @@ terminalInput.addEventListener("keydown", function(event) {
     }
 
 });
+// =========================
+// LUNA'S PERSONALITY SYSTEM
+// =========================
+
+function talkToLuna() {
+
+    const input = document.getElementById("lunaInput");
+
+    const chat = document.getElementById("lunaChat");
+
+    const message = input.value.trim().toLowerCase();
+
+    if (message === "") return;
+
+    // Display visitor's message
+
+    const userMessage = document.createElement("p");
+
+    userMessage.textContent = "You: " + input.value;
+
+    chat.appendChild(userMessage);
+
+
+    // Luna's responses
+
+    let response;
+
+    if (message.includes("hello") || message.includes("hi")) {
+
+        response = "Well, hello there, beautiful stranger! 🧚‍♀️";
+
+    } else if (message.includes("sad") || message.includes("cry")) {
+
+        response = "Sending you the biggest magical hug. Remember, even stars need darkness to shine. 💜";
+
+    } else if (message.includes("love")) {
+
+        response = "Ahhh, love. The universe's most confusing little experiment. 💗";
+
+    } else if (message.includes("name")) {
+
+        response = "I'm Luna! Guardian of this little corner of cyberspace.";
+
+    } else if (message.includes("help")) {
+
+        response = "Try telling me hello, asking my name, or telling me how you're feeling!";
+
+    } else if (message.includes("bored")) {
+
+        response = "Boredom is just an invitation to cause some harmless chaos. Try the Randomizer!";
+
+    } else if (message.includes("bye")) {
+
+        response = "Until the stars bring us together again. 🌙";
+
+    } else {
+
+        const randomResponses = [
+
+            "Interesting... tell me more. ✨",
+
+            "The stars are listening. 🌌",
+
+            "I feel like there's a story behind that.",
+
+            "If I had a notebook, I'd write that down.",
+
+            "Hmm. My magical instincts are tingling.",
+
+            "You humans are fascinating creatures. 🧚‍♀️"
+
+        ];
+
+        response = randomResponses[
+            Math.floor(Math.random() * randomResponses.length)
+        ];
+
+    }
+
+
+    // Display Luna's response
+
+    const lunaMessage = document.createElement("p");
+
+    lunaMessage.textContent = "Luna: " + response;
+
+    chat.appendChild(lunaMessage);
+
+
+    // Clear input
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
+
+}
