@@ -132,6 +132,44 @@
     >
 
     <button onclick="talkToLuna()">Send message</button>
+    <button onclick="clearLunaMemory()" class="clear-button">Clear conversation</button>
+
+</div>
+<!-- THE ENCHANTED LIBRARY -->
+
+<div class="card journal">
+
+    <h2>📖 The Enchanted Library</h2>
+
+    <p>A little space for everything your mind carries.</p>
+
+    <input
+        type="text"
+        id="journalTitle"
+        placeholder="Give your entry a title..."
+    >
+
+    <textarea
+        id="journalEntry"
+        placeholder="Dear diary, tonight I was thinking..."
+    ></textarea>
+
+    <button onclick="saveJournalEntry()">
+        Save entry ✨
+    </button>
+
+    <hr>
+
+    <h3>Your memories</h3>
+
+    <input
+        type="text"
+        id="journalSearch"
+        placeholder="Search your memories..."
+        oninput="displayJournalEntries()"
+    >
+
+    <div id="journalEntries"></div>
 
 </div>
 

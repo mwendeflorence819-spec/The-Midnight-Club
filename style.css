@@ -459,3 +459,81 @@ html {
         width: 100%;
     }
 }
+.clear-button {
+    background: transparent;
+    color: #d6a5ff;
+    border: 1px solid #8b5ab5;
+    margin-left: 8px;
+}
+
+.clear-button:hover {
+    background: #382448;
+    color: white;
+}
+/* =========================
+   THE ENCHANTED LIBRARY
+========================= */
+
+.journal {
+    grid-column: 1 / -1;
+    background: linear-gradient(
+        135deg,
+        #21172e,
+        #171321,
+        #302044
+    );
+}
+
+.journal h3 {
+    color: #d6b8ff;
+    font-family: 'Playfair Display', serif;
+    margin: 20px 0;
+}
+
+.journal hr {
+    border: 0;
+    border-top: 1px solid #49365d;
+    margin: 25px 0;
+}
+
+.journal-entry {
+    background: #100d19;
+    border: 1px solid #49365d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 15px;
+}
+
+.journal-entry h4 {
+    color: #d6b8ff;
+    margin-bottom: 8px;
+}
+
+.journal-entry small {
+    color: #9e8bab;
+}
+
+.journal-entry p {
+    color: #d0c1df;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    margin-top: 12px;
+}
+
+.delete-entry {
+    background: transparent;
+    color: #ff9cba;
+    border: 1px solid #a64c72;
+    margin-top: 12px;
+}
+
+.delete-entry:hover {
+    background: #55243d;
+    color: white;
+}
+
+@media (max-width: 700px) {
+    .journal {
+        grid-column: auto;
+    }
+}

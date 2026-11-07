@@ -277,6 +277,17 @@ function talkToLuna() {
 
     chat.appendChild(userMessage);
 
+    // Save visitor's message
+
+const history = JSON.parse(
+    localStorage.getItem("lunaChatHistory") || "[]"
+);
+
+history.push({
+    sender: "You",
+    text: input.value
+});
+
 
     // Luna's responses
 
@@ -343,6 +354,18 @@ function talkToLuna() {
 
     chat.appendChild(lunaMessage);
 
+    // Save Luna's response
+
+history.push({
+    sender: "Luna",
+    text: response
+});
+
+localStorage.setItem(
+    "lunaChatHistory",
+    JSON.stringify(history)
+);
+
 
     // Clear input
 
@@ -351,3 +374,222 @@ function talkToLuna() {
     chat.scrollTop = chat.scrollHeight;
 
 }
+// =========================
+// LUNA'S MEMORY SYSTEM
+// =========================
+
+function loadLunaMemory() {
+
+    const chat = document.getElementById("lunaChat");
+
+    const history = JSON.parse(
+        localStorage.getItem("lunaChatHistory") || "[]"
+    );
+
+    chat.innerHTML = "";
+
+    if (history.length === 0) {
+
+        chat.textContent = "Luna: Welcome back, stranger. ✨";
+
+        return;
+    }
+
+    history.forEach(function(message) {
+
+        const line = document.createElement("p");
+
+        line.textContent = message.sender + ": " + message.text;
+
+        chat.appendChild(line);
+
+    });
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+loadLunaMemory();
+// CLEAR LUNA'S MEMORY
+
+function clearLunaMemory() {
+
+    const confirmation = confirm(
+        "Are you sure you want to erase Luna's conversation?"
+    );
+
+    if (confirmation) {
+
+        localStorage.removeItem("lunaChatHistory");
+
+        loadLunaMemory();
+
+    }
+
+}
+// =========================
+// THE ENCHANTED LIBRARY
+// =========================
+
+
+// SAVE JOURNAL ENTRIES
+
+function saveJournalEntry() {
+
+    const titleInput = document.getElementById("journalTitle");
+
+    const entryInput = document.getElementById("journalEntry");
+
+    const title = titleInput.value.trim();
+
+    const content = entryInput.value.trim();
+
+    if (title === "" || content === "") {
+
+        alert("Please enter both a title and your journal entry.");
+
+        return;
+
+    }
+
+    const entries = JSON.parse(
+        localStorage.getItem("dreamJournal") || "[]"
+    );
+
+    const newEntry = {
+
+        id: Date.now(),
+
+        title: title,
+
+        content: content,
+
+        date: new Date().toLocaleString()
+
+    };
+
+    entries.unshift(newEntry);
+
+    localStorage.setItem(
+        "dreamJournal",
+        JSON.stringify(entries)
+    );
+
+    titleInput.value = "";
+
+    entryInput.value = "";
+
+    displayJournalEntries();
+
+    alert("Your memory has been preserved. ✨");
+
+}
+
+
+// DISPLAY JOURNAL ENTRIES
+
+function displayJournalEntries() {
+
+    const container = document.getElementById("journalEntries");
+
+    const search = document.getElementById("journalSearch")
+        .value.toLowerCase();
+
+    const entries = JSON.parse(
+        localStorage.getItem("dreamJournal") || "[]"
+    );
+
+    container.innerHTML = "";
+
+    const filteredEntries = entries.filter(function(entry) {
+
+        return entry.title.toLowerCase().includes(search) ||
+               entry.content.toLowerCase().includes(search);
+
+    });
+
+    if (filteredEntries.length === 0) {
+
+        container.textContent = "No memories found. Your story starts here. 🌙";
+
+        return;
+
+    }
+
+    filteredEntries.forEach(function(entry) {
+
+        const card = document.createElement("div");
+
+        card.className = "journal-entry";
+
+        const title = document.createElement("h4");
+
+        title.textContent = entry.title;
+
+        const date = document.createElement("small");
+
+        date.textContent = entry.date;
+
+        const content = document.createElement("p");
+
+        content.textContent = entry.content;
+
+        const deleteButton = document.createElement("button");
+
+        deleteButton.textContent = "Delete memory";
+
+        deleteButton.className = "delete-entry";
+
+        deleteButton.onclick = function() {
+
+            deleteJournalEntry(entry.id);
+
+        };
+
+        card.appendChild(title);
+
+        card.appendChild(date);
+
+        card.appendChild(content);
+
+        card.appendChild(deleteButton);
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+// DELETE INDIVIDUAL ENTRIES
+
+function deleteJournalEntry(id) {
+
+    const confirmation = confirm(
+        "Are you sure you want to delete this memory?"
+    );
+
+    if (!confirmation) return;
+
+    const entries = JSON.parse(
+        localStorage.getItem("dreamJournal") || "[]"
+    );
+
+    const updatedEntries = entries.filter(function(entry) {
+
+        return entry.id !== id;
+
+    });
+
+    localStorage.setItem(
+        "dreamJournal",
+        JSON.stringify(updatedEntries)
+    );
+
+    displayJournalEntries();
+
+}
+
+
+// LOAD SAVED ENTRIES
+
+displayJournalEntries();
